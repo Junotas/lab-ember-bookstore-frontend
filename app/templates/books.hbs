@@ -1,8 +1,33 @@
 <h1 class="text-3xl font-bold mb-6">Books List</h1>
+
+{{!-- Form for adding/editing books --}}
+<form {{on "submit" this.handleFormSubmit}} class="mb-6">
+  <label>Title:</label>
+  <input type="text" value={{this.formTitle}} {{on "input" this.updateFormTitle}} class="border p-2 mb-4 w-full" />
+
+  <label>Author:</label>
+  <input type="text" value={{this.formAuthor}} {{on "input" this.updateFormAuthor}} class="border p-2 mb-4 w-full" />
+
+  <label>Genre:</label>
+  <input type="text" value={{this.formGenre}} {{on "input" this.updateFormGenre}} class="border p-2 mb-4 w-full" />
+
+  <label>Published Year:</label>
+  <input type="number" value={{this.formYear}} {{on "input" this.updateFormYear}} class="border p-2 mb-4 w-full" />
+
+  <button type="submit" class="bg-green-500 text-white py-2 px-4 rounded">
+    {{if this.isEditing "Update Book" "Add Book"}}
+  </button>
+</form>
+
+{{!-- Books list --}}
 <ul class="space-y-4">
   {{#each this.model as |book|}}
     <li class="p-4 border border-gray-300 rounded-lg shadow-md">
       <strong class="text-lg font-semibold">{{book.title}}</strong> by {{book.author}} - <span class="italic">{{book.genre}}</span> (Published: {{book.publishedYear}})
+      <div>
+        <button class="text-yellow-500" type="button" {{on "click" (fn this.editBook book)}}>Edit</button> |
+        <button class="text-red-500" type="button" {{on "click" (fn this.deleteBook book.id)}}>Delete</button>
+      </div>
     </li>
   {{/each}}
 </ul>

@@ -8,10 +8,10 @@ module.exports = function (defaults) {
       compile: {
         plugins: [
           require('tailwindcss')('./tailwind.config.js'),
-          require('autoprefixer')
-        ]
-      }
-    }
+          require('autoprefixer'),
+        ],
+      },
+    },
   });
 
   return app.toTree();

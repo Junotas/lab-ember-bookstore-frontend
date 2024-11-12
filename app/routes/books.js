@@ -1,10 +1,20 @@
 import Route from '@ember/routing/route';
-import ENV from 'bookstore-frontend/config/environment'; // Import environment configuration
 
 export default class BooksRoute extends Route {
-  async model() {
-    let response = await fetch(`${ENV.APP.apiHost}/books`); // Fetch from Rails API
-    let books = await response.json(); // Parse the JSON response
-    return books; // Return the array of books
+  model() {
+    // Fetch the books from the API
+    return fetch('http://localhost:3000/books')
+      .then(response => response.json())
+      .then(data => {
+        console.log('Fetched books:', data);
+        return data;
+      })
+      .catch(error => console.error('Error fetching books:', error));
+  }
+
+  actions = {
+    refresh() {
+      this.refresh();
+    }
   }
 }
