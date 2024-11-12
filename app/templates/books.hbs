@@ -1,2 +1,8 @@
-{{page-title "Books"}}
-{{outlet}}
+<h1>Books List</h1>
+<ul>
+  {{#each this.model as |book|}}
+    <li>
+      <strong>{{book.title}}</strong> by {{book.author}} - {{book.genre}} (Published: {{book.publishedYear}})
+    </li>
+  {{/each}}
+</ul>
