@@ -1,8 +1,8 @@
-<h1>Books List</h1>
-<ul>
+<h1 class="text-3xl font-bold mb-6">Books List</h1>
+<ul class="space-y-4">
   {{#each this.model as |book|}}
-    <li>
-      <strong>{{book.title}}</strong> by {{book.author}} - {{book.genre}} (Published: {{book.publishedYear}})
+    <li class="p-4 border border-gray-300 rounded-lg shadow-md">
+      <strong class="text-lg font-semibold">{{book.title}}</strong> by {{book.author}} - <span class="italic">{{book.genre}}</span> (Published: {{book.publishedYear}})
     </li>
   {{/each}}
 </ul>
