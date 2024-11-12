@@ -23,7 +23,7 @@
 <ul class="space-y-4">
   {{#each this.model as |book|}}
     <li class="p-4 border border-gray-300 rounded-lg shadow-md">
-      <strong class="text-lg font-semibold">{{book.title}}</strong> by {{book.author}} - <span class="italic">{{book.genre}}</span> (Published: {{book.publishedYear}})
+      <strong class="text-lg font-semibold">{{book.title}}</strong> by {{book.author}} - <span class="italic">{{book.genre}}</span> (Published: {{book.published_year}})
       <div>
         <button class="text-yellow-500" type="button" {{on "click" (fn this.editBook book)}}>Edit</button> |
         <button class="text-red-500" type="button" {{on "click" (fn this.deleteBook book.id)}}>Delete</button>
